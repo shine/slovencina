@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+  <head> 
+    <title>Slovencina</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-language" content="ru" /> 
+    <%= stylesheet_link_tag "application" %>
+    <style>
+       div.content
+      {
+        margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 15%;
+      }
+      
+         div.menu
+      {
+           position: absolute;
+           top: 0;
+           left: 0;
+      }
+      
+       div.menu li
+     {
+         float: left;
+         list-style-type: none;
+         margin: 10px;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <%= render :partial => '/shared/menu' %>
+    </div>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

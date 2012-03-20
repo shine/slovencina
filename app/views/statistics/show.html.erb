@@ -1,0 +1,10 @@
+<h2>Доска позора на сегодня</h2>
+<table>
+  <% @stats[0..9].compact.each do |s| %>
+    <% current_word = @words.detect{|item| item.id == s[0]} || next %>
+    <tr>
+      <td><%= current_word.rus %></td>
+      <td><%= current_word.slov %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,13 @@
+<h1>New word</h1>
+<%= form_for @word do |w| %>
+  <p>
+    Category: <%= w.select :category_id, Category.all.collect{|item| [item.name, item.id]} %>
+  </p>
+  <p>
+    RUS: <%= w.text_field :rus %>
+  </p>
+  <p>
+    SLOV: <%= w.text_field :slov %>
+  </p>
+  <%= submit_tag 'Create' %>
+<% end %>

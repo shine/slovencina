@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  word_id: 1
+  is_correct: false
+  distance: 1
+
+two:
+  word_id: 1
+  is_correct: false
+  distance: 3  

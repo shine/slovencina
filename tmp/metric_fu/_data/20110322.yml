@@ -1,0 +1,810 @@
+--- 
+:stats: 
+  :code_to_test_ratio: 0.4
+  :lines: 
+  - :methods: 8
+    :classes: 6
+    :loc: 117
+    :lines: 149
+    :methods_per_class: 1
+    :loc_per_method: 12
+    :name: Controllers
+  - :methods: 1
+    :classes: 0
+    :loc: 19
+    :lines: 20
+    :methods_per_class: 0
+    :loc_per_method: 17
+    :name: Helpers
+  - :methods: 8
+    :classes: 4
+    :loc: 66
+    :lines: 80
+    :methods_per_class: 2
+    :loc_per_method: 6
+    :name: Models
+  - :methods: 1
+    :classes: 0
+    :loc: 20
+    :lines: 27
+    :methods_per_class: 0
+    :loc_per_method: 18
+    :name: Libraries
+  - :methods: 0
+    :classes: 0
+    :loc: 0
+    :lines: 0
+    :methods_per_class: 0
+    :loc_per_method: 0
+    :name: Integration tests
+  - :methods: 0
+    :classes: 4
+    :loc: 24
+    :lines: 32
+    :methods_per_class: 0
+    :loc_per_method: 0
+    :name: Functional tests
+  - :methods: 0
+    :classes: 8
+    :loc: 63
+    :lines: 78
+    :methods_per_class: 0
+    :loc_per_method: 0
+    :name: Unit tests
+  - :methods: 18
+    :classes: 22
+    :loc: 309
+    :lines: 386
+    :methods_per_class: 0
+    :loc_per_method: 15
+    :name: Total
+  :codeLOC: 222
+  :testLOC: 87
+:flog: 
+  :average: 20.6506966012278
+  :method_containers: 
+  - :highest_score: 105.054140803683
+    :methods: 
+      GraphsController#index: 
+        :score: 105.054140803683
+        :operators: 
+          :ceil: 1.7
+          :+: 2.2
+          :html: 1.3
+          :/: 1.9
+          :ago: 1.5
+          :month: 1.7
+          :set_range: 3.0
+          :>: 1.9
+          :empty?: 1.7
+          :add_element: 1.5
+          :to_time: 5.7
+          :<<: 1.9
+          :tomorrow: 2.1
+          :at_beginning_of_day: 3.8
+          :url_for: 1.6
+          :respond_to: 1.1
+          :render: 1.5
+          :each: 1.5
+          :to_date: 6.5
+          :assignment: 55.9
+          :to_i: 5.1
+          :today: 1.5
+          :size: 2.3
+          :to_a: 1.9
+          :branch: 12.6
+          :to_f: 2.1
+          :distance: 2.4
+          :map: 1.7
+          :to_s: 1.8
+          :json: 1.3
+          :lit_fixnum: 3.95
+          :new: 12.6
+          :inject: 4.2
+          :all: 1.7
+          :open_flash_chart_object: 1.4
+        :path: app/controllers/graphs_controller.rb:2
+    :total_score: 105.054140803683
+    :average_score: 105.054140803683
+    :name: GraphsController
+    :path: app/controllers/graphs_controller.rb
+  - :highest_score: 88.033984914918
+    :methods: 
+      StatisticsController#index: 
+        :score: 16.7044904142569
+        :operators: 
+          :/: 1.2
+          :count: 2.4
+          :to_proc_normal: 7.00000000000001
+          :assignment: 4.8
+          :to_f: 1.4
+          :block_pass: 1.4
+          :sort_by: 1.2
+          :all: 1.4
+        :path: app/controllers/statistics_controller.rb:2
+      StatisticsController#show: 
+        :score: 88.033984914918
+        :operators: 
+          :delete_if: 1.2
+          :+: 5.8
+          :is_correct: 3.6
+          :/: 4.7
+          :ago: 1.4
+          :select: 4.9
+          :word_id: 6.6
+          :each: 1.2
+          :days: 1.6
+          :assignment: 33.5
+          :to_i: 1.3
+          :params: 1.7
+          :keys: 1.2
+          :size: 4.7
+          :branch: 13.1
+          :reverse: 1.2
+          :*: 1.5
+          :distance: 2.2
+          :to_f: 7.2
+          :==: 2.9
+          :lit_fixnum: 3.05
+          :[]: 14.8
+          :sort_by: 1.4
+          :inject: 3.8
+          :all: 2.4
+        :path: app/controllers/statistics_controller.rb:9
+    :total_score: 104.738475329175
+    :average_score: 52.3692376645875
+    :name: StatisticsController
+    :path: app/controllers/statistics_controller.rb
+  - :highest_score: 64.8975779594278
+    :methods: 
+      main#none: 
+        :score: 1.1
+        :operators: 
+          :require: 1.1
+        :path: 
+      main#ld: 
+        :score: 64.8975779594278
+        :operators: 
+          :+: 5.1
+          :assignment: 20.7
+          :min: 1.5
+          :-: 8.80000000000001
+          :each_index: 1.2
+          :dup: 1.5
+          :upto: 6.10000000000001
+          :branch: 8.80000000000001
+          :size: 2.4
+          :==: 1.5
+          :lit_fixnum: 4.475
+          :[]: 22.1
+          :push: 2.6
+          :new: 3.6
+        :path: lib/leven.rb:3
+    :total_score: 65.9975779594278
+    :average_score: 32.9987889797139
+    :name: main
+    :path: lib/leven.rb
+  - :highest_score: 46.0672334745641
+    :methods: 
+      AttemptsController#create: 
+        :score: 46.0672334745641
+        :operators: 
+          :is_correct: 1.3
+          :save!: 1.3
+          :redirect_to: 1.3
+          :slov: 5.8
+          :rus: 2.8
+          :find: 1.3
+          :assignment: 9.3
+          :ld: 1.3
+          :params: 9.2
+          :branch: 1.3
+          :flash: 2.8
+          :==: 1.3
+          :[]: 15.4
+          :new: 1.3
+        :path: app/controllers/attempts_controller.rb:9
+      AttemptsController#new: 
+        :score: 4.85489443757534
+        :operators: 
+          :assignment: 2.6
+          :get_random_word: 1.3
+          :id: 1.5
+          :new: 1.3
+        :path: app/controllers/attempts_controller.rb:4
+    :total_score: 50.9221279121395
+    :average_score: 25.4610639560697
+    :name: AttemptsController
+    :path: app/controllers/attempts_controller.rb
+  - :highest_score: 43.5475889114427
+    :methods: 
+      Word::get_random_word: 
+        :score: 43.5475889114427
+        :operators: 
+          :+: 1.3
+          :ceil: 1.4
+          :/: 6.00000000000001
+          :rand: 1.4
+          :zip: 1.4
+          :each: 1.2
+          :assignment: 19.3
+          :-: 1.4
+          :good_attempts_percent: 3.3
+          :>=: 1.4
+          :size: 1.4
+          :total_attempts: 3.3
+          :branch: 7.80000000000001
+          :*: 4.6
+          :map: 1.2
+          :lit_fixnum: 1.35
+          :==: 2.8
+          :inject: 2.4
+          :new: 1.2
+          :all: 1.2
+        :path: app/models/word.rb:33
+    :total_score: 43.5475889114427
+    :average_score: 43.5475889114427
+    :name: Word::get_random_word
+    :path: app/models/word.rb
+  - :highest_score: 20.7243817760627
+    :methods: 
+      Word#bad_attempts_percent: 
+        :score: 8.68331733843697
+        :operators: 
+          :/: 1.3
+          :>: 1.2
+          :total_attempts: 3.1
+          :branch: 1.2
+          :to_f: 1.5
+          :bad_attempts: 1.5
+        :path: app/models/word.rb:17
+      Word#average_leven: 
+        :score: 20.7243817760627
+        :operators: 
+          :+: 1.6
+          :/: 1.3
+          :ago: 1.5
+          :empty?: 1.2
+          :>: 1.3
+          :created_at: 1.5
+          :select: 1.2
+          :attempts: 1.4
+          :assignment: 7.30000000000001
+          :size: 1.7
+          :branch: 3.9
+          :to_f: 1.5
+          :distance: 1.8
+          :inject: 3.0
+        :path: app/models/word.rb:53
+      Word#bad_attempts: 
+        :score: 7.6791926658992
+        :operators: 
+          :is_correct: 1.7
+          :select: 1.4
+          :attempts: 1.6
+          :assignment: 1.5
+          :size: 1.2
+          :branch: 1.4
+          :==: 1.5
+        :path: app/models/word.rb:9
+      Word#total_attempts: 
+        :score: 2.6
+        :operators: 
+          :attempts: 1.4
+          :size: 1.2
+        :path: app/models/word.rb:5
+      Word#good_attempts: 
+        :score: 6.05805249234439
+        :operators: 
+          :is_correct: 1.5
+          :select: 1.4
+          :attempts: 1.6
+          :assignment: 1.5
+          :size: 1.2
+          :branch: 1.4
+        :path: app/models/word.rb:13
+      Word#none: 
+        :score: 2.2
+        :operators: 
+          :belongs_to: 1.1
+          :has_many: 1.1
+        :path: 
+      Word#good_attempts_percent: 
+        :score: 8.68331733843697
+        :operators: 
+          :/: 1.3
+          :good_attempts: 1.5
+          :>: 1.2
+          :total_attempts: 3.1
+          :branch: 1.2
+          :to_f: 1.5
+        :path: app/models/word.rb:25
+    :total_score: 56.6282616111803
+    :average_score: 8.08975165874004
+    :name: Word
+    :path: app/models/word.rb
+  - :highest_score: 16.1052786377635
+    :methods: 
+      Word::average_leven: 
+        :score: 16.1052786377635
+        :operators: 
+          :+: 1.6
+          :/: 1.3
+          :ago: 1.4
+          :empty?: 1.2
+          :assignment: 6.00000000000001
+          :size: 1.7
+          :branch: 2.7
+          :to_f: 1.5
+          :distance: 1.8
+          :inject: 3.0
+          :all: 1.2
+        :path: app/models/word.rb:63
+    :total_score: 16.1052786377635
+    :average_score: 16.1052786377635
+    :name: Word::average_leven
+    :path: app/models/word.rb
+  - :highest_score: 9.31450481775602
+    :methods: 
+      WordsController#new: 
+        :score: 7.15891053163818
+        :operators: 
+          :assignment: 2.5
+          :branch: 1.2
+          :[]: 2.5
+          :session: 2.9
+          :new: 1.2
+        :path: app/controllers/words_controller.rb:2
+      WordsController#show: 
+        :score: 4.36806593356831
+        :operators: 
+          :assignment: 1.2
+          :params: 1.6
+          :first: 1.2
+          :[]: 1.4
+        :path: app/controllers/words_controller.rb:16
+      WordsController#create: 
+        :score: 9.31450481775602
+        :operators: 
+          :save!: 1.2
+          :redirect_to: 1.2
+          :category_id: 1.2
+          :assignment: 2.4
+          :params: 1.6
+          :session: 1.2
+          :[]: 1.4
+          :new: 1.2
+        :path: app/controllers/words_controller.rb:7
+    :total_score: 20.8414812829625
+    :average_score: 6.94716042765417
+    :name: WordsController
+    :path: app/controllers/words_controller.rb
+  - :highest_score: 6.93108938046539
+    :methods: 
+      ApplicationHelper#get_success_color: 
+        :score: 6.93108938046539
+        :operators: 
+          :>=: 2.6
+          :<: 2.4
+          :branch: 4.8
+        :path: app/helpers/application_helper.rb:3
+    :total_score: 6.93108938046539
+    :average_score: 6.93108938046539
+    :name: ApplicationHelper
+    :path: app/helpers/application_helper.rb
+  - :highest_score: 2.2
+    :methods: 
+      ApplicationController#none: 
+        :score: 2.2
+        :operators: 
+          :protect_from_forgery: 1.1
+          :helper: 1.1
+        :path: 
+    :total_score: 2.2
+    :average_score: 2.2
+    :name: ApplicationController
+    :path: ""
+  - :highest_score: 1.0
+    :methods: 
+      Attempt#none: 
+        :score: 1.0
+        :operators: 
+          :belongs_to: 1.0
+        :path: 
+    :total_score: 1.0
+    :average_score: 1.0
+    :name: Attempt
+    :path: ""
+  - :highest_score: 1.0
+    :methods: 
+      Category#none: 
+        :score: 1.0
+        :operators: 
+          :has_many: 1.0
+        :path: 
+    :total_score: 1.0
+    :average_score: 1.0
+    :name: Category
+    :path: ""
+  :total: 474.966021828239
+:flay: 
+  :total_score: "0"
+  :matches: []
+
+:rcov: 
+  :global_percent_run: 0.0
+:saikuro: 
+  :methods: 
+  - :lines: 22
+    :complexity: 9
+    :name: StatisticsController#show
+  - :lines: 55
+    :complexity: 9
+    :name: GraphsController#index
+  - :lines: 24
+    :complexity: 8
+    :name: "#ld"
+  - :lines: 18
+    :complexity: 7
+    :name: Word#self.get_random_word
+  - :lines: 8
+    :complexity: 4
+    :name: ApplicationHelper#get_success_color
+  - :lines: 8
+    :complexity: 4
+    :name: Word#average_leven
+  - :lines: 8
+    :complexity: 3
+    :name: Word#self.average_leven
+  - :lines: 18
+    :complexity: 2
+    :name: AttemptsController#create
+  - :lines: 3
+    :complexity: 2
+    :name: WordsController#new
+  - :lines: 2
+    :complexity: 2
+    :name: Word#bad_attempts
+  - :lines: 2
+    :complexity: 2
+    :name: Word#good_attempts
+  - :lines: 6
+    :complexity: 2
+    :name: Word#bad_attempts_percent
+  - :lines: 6
+    :complexity: 2
+    :name: Word#good_attempts_percent
+  - :lines: 3
+    :complexity: 1
+    :name: AttemptsController#new
+  - :lines: 2
+    :complexity: 1
+    :name: WordsController#show
+  - :lines: 7
+    :complexity: 1
+    :name: WordsController#create
+  - :lines: 5
+    :complexity: 1
+    :name: StatisticsController#index
+  - :lines: 2
+    :complexity: 1
+    :name: Word#total_attempts
+  :classes: 
+  - :lines: 71
+    :complexity: 23
+    :name: Word
+    :defs: 
+    - :lines: 2
+      :complexity: 1
+      :name: Word#total_attempts
+    - :lines: 2
+      :complexity: 2
+      :name: Word#bad_attempts
+    - :lines: 2
+      :complexity: 2
+      :name: Word#good_attempts
+    - :lines: 6
+      :complexity: 2
+      :name: Word#bad_attempts_percent
+    - :lines: 6
+      :complexity: 2
+      :name: Word#good_attempts_percent
+    - :lines: 18
+      :complexity: 7
+      :name: Word#self.get_random_word
+    - :lines: 8
+      :complexity: 4
+      :name: Word#average_leven
+    - :lines: 8
+      :complexity: 3
+      :name: Word#self.average_leven
+  - :lines: 31
+    :complexity: 10
+    :name: StatisticsController
+    :defs: 
+    - :lines: 5
+      :complexity: 1
+      :name: StatisticsController#index
+    - :lines: 22
+      :complexity: 9
+      :name: StatisticsController#show
+  - :lines: 57
+    :complexity: 9
+    :name: GraphsController
+    :defs: 
+    - :lines: 55
+      :complexity: 9
+      :name: GraphsController#index
+  - :lines: 24
+    :complexity: 8
+    :name: ""
+    :defs: 
+    - :lines: 24
+      :complexity: 8
+      :name: "#ld"
+  - :lines: 18
+    :complexity: 4
+    :name: WordsController
+    :defs: 
+    - :lines: 3
+      :complexity: 2
+      :name: WordsController#new
+    - :lines: 7
+      :complexity: 1
+      :name: WordsController#create
+    - :lines: 2
+      :complexity: 1
+      :name: WordsController#show
+  - :lines: 10
+    :complexity: 4
+    :name: ApplicationHelper
+    :defs: 
+    - :lines: 8
+      :complexity: 4
+      :name: ApplicationHelper#get_success_color
+  - :lines: 25
+    :complexity: 3
+    :name: AttemptsController
+    :defs: 
+    - :lines: 3
+      :complexity: 1
+      :name: AttemptsController#new
+    - :lines: 18
+      :complexity: 2
+      :name: AttemptsController#create
+  - :lines: 1
+    :complexity: 0
+    :name: CategoriesHelper
+  - :lines: 1
+    :complexity: 0
+    :name: Graph
+  - :lines: 1
+    :complexity: 0
+    :name: CategoriesController
+  - :lines: 2
+    :complexity: 0
+    :name: Category
+  - :lines: 1
+    :complexity: 0
+    :name: GraphsHelper
+  - :lines: 1
+    :complexity: 0
+    :name: AttemptsHelper
+  - :lines: 1
+    :complexity: 0
+    :name: WordsHelper
+  - :lines: 2
+    :complexity: 0
+    :name: Attempt
+  - :lines: 1
+    :complexity: 0
+    :name: ""
+  - :lines: 1
+    :complexity: 0
+    :name: ""
+  - :lines: 6
+    :complexity: 0
+    :name: ApplicationController
+  - :lines: 2
+    :complexity: 0
+    :name: ""
+  - :lines: 0
+    :complexity: 0
+    :name: ""
+  - :lines: 2
+    :complexity: 0
+    :name: ""
+  - :lines: 0
+    :complexity: 0
+    :name: ""
+  :files: 
+  - :classes: 
+    - :methods: 
+      - :lines: 18
+        :complexity: 7
+        :name: Word#self.get_random_word
+      - :lines: 8
+        :complexity: 4
+        :name: Word#average_leven
+      - :lines: 8
+        :complexity: 3
+        :name: Word#self.average_leven
+      - :lines: 6
+        :complexity: 2
+        :name: Word#good_attempts_percent
+      - :lines: 6
+        :complexity: 2
+        :name: Word#bad_attempts_percent
+      - :lines: 2
+        :complexity: 2
+        :name: Word#good_attempts
+      - :lines: 2
+        :complexity: 2
+        :name: Word#bad_attempts
+      - :lines: 2
+        :complexity: 1
+        :name: Word#total_attempts
+      :lines: 71
+      :complexity: 23
+      :class_name: Word
+    :filename: app/models/word.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 22
+        :complexity: 9
+        :name: StatisticsController#show
+      - :lines: 5
+        :complexity: 1
+        :name: StatisticsController#index
+      :lines: 31
+      :complexity: 10
+      :class_name: StatisticsController
+    :filename: app/controllers/statistics_controller.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 55
+        :complexity: 9
+        :name: GraphsController#index
+      :lines: 57
+      :complexity: 9
+      :class_name: GraphsController
+    :filename: app/controllers/graphs_controller.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 24
+        :complexity: 8
+        :name: "#ld"
+      :lines: 24
+      :complexity: 8
+      :class_name: ""
+    :filename: lib/leven.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 3
+        :complexity: 2
+        :name: WordsController#new
+      - :lines: 7
+        :complexity: 1
+        :name: WordsController#create
+      - :lines: 2
+        :complexity: 1
+        :name: WordsController#show
+      :lines: 18
+      :complexity: 4
+      :class_name: WordsController
+    :filename: app/controllers/words_controller.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: ""
+    - :methods: 
+      - :lines: 8
+        :complexity: 4
+        :name: ApplicationHelper#get_success_color
+      :lines: 10
+      :complexity: 4
+      :class_name: ApplicationHelper
+    :filename: app/helpers/application_helper.rb
+  - :classes: 
+    - :methods: 
+      - :lines: 18
+        :complexity: 2
+        :name: AttemptsController#create
+      - :lines: 3
+        :complexity: 1
+        :name: AttemptsController#new
+      :lines: 25
+      :complexity: 3
+      :class_name: AttemptsController
+    :filename: app/controllers/attempts_controller.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: WordsHelper
+    :filename: app/helpers/words_helper.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: AttemptsHelper
+    :filename: app/helpers/attempts_helper.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: GraphsHelper
+    :filename: app/helpers/graphs_helper.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: CategoriesHelper
+    :filename: app/helpers/categories_helper.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: CategoriesController
+    :filename: app/controllers/categories_controller.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: Graph
+    :filename: app/models/graph.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 2
+      :complexity: 0
+      :class_name: Category
+    :filename: app/models/category.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 2
+      :complexity: 0
+      :class_name: Attempt
+    :filename: app/models/attempt.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 1
+      :complexity: 0
+      :class_name: ""
+    - :methods: []
+
+      :lines: 6
+      :complexity: 0
+      :class_name: ApplicationController
+    :filename: app/controllers/application_controller.rb
+  - :classes: 
+    - :methods: []
+
+      :lines: 2
+      :complexity: 0
+      :class_name: ""
+    :filename: app/views/shared/_menu.html.erb
+  - :classes: 
+    - :methods: []
+
+      :lines: 2
+      :complexity: 0
+      :class_name: ""
+    :filename: app/views/attempts/new.html.erb
+  - :classes: 
+    - :methods: []
+
+      :lines: 0
+      :complexity: 0
+      :class_name: ""
+    :filename: app/views/words/new.html.erb

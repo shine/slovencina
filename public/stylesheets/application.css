@@ -1,0 +1,25 @@
+.red
+{
+  color: red;        
+}
+
+.yellow
+{
+  color: #CC0;        
+}
+
+.green
+{
+  color: green;        
+}
+
+h2
+{
+  clear: both;
+}
+
+
+body
+{
+    font-size: 28px;
+}

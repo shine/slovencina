@@ -1,0 +1,334 @@
+Loaded suite /usr/bin/rcov
+Started
+.....BrowsingTest#test_homepage (22 ms warmup)
+        process_time: 20 ms
+              memory: unsupported
+             objects: unsupported
+....................
+Finished in 1.850666 seconds.
+
+27 tests, 71 assertions, 0 failures, 0 errors
+================================================================================
+app/models/graph.rb
+================================================================================
+   class Graph < ActiveRecord::Base
+   end
+================================================================================
+app/helpers/application_helper.rb
+================================================================================
+   # Methods added to this helper will be available to all templates in the application.
+   module ApplicationHelper
+     def get_success_color number
+       if number < 0.5 
+         'red'
+       elsif (number >= 0.5 && number < 0.95) 
+         'yellow'
+       elsif number >= 0.95 
+         'green'
+       end
+     end
+   end
+================================================================================
+app/models/attempt.rb
+================================================================================
+   class Attempt < ActiveRecord::Base
+     belongs_to :word
+   end
+================================================================================
+app/controllers/statistics_controller.rb
+================================================================================
+   class StatisticsController < ApplicationController
+     def index
+       @words = Word.all(:include => :attempts).sort_by(&:good_attempts_percent)
+       @total_attempts = Attempt.count
+       @total_good_attempts = Attempt.count(:conditions => {:is_correct => true})
+       @total_good_attempts_percent = @total_good_attempts/(@total_attempts.to_f)
+     end
+     
+     def show
+         days_counter = params[:id].to_i || 1
+         attempts = Attempt.all(:conditions => ['created_at > ?', days_counter.days.ago])
+       
+       @stats = {}
+         attempts.each do |a|
+         unless @stats[a.word_id]
+               word_attempts = attempts.select{|item| item.word_id == a.word_id}
+               
+               bad_attempts = word_attempts.select{|item| !item.is_correct}.size
+               good_attempts = word_attempts.select{|item| item.is_correct}.size
+               good_attempts_percent = good_attempts/(good_attempts + bad_attempts).to_f
+               leven_avg = word_attempts.inject(0){|sum, item| sum += item.distance}.to_f/word_attempts.size
+               
+          @stats[a.word_id] = [good_attempts_percent, leven_avg]
+         end
+       end
+   
+       @stats.delete_if{|item| item[1][0] == 1.0}    
+         stat_keys = @stats.keys
+       @stats = @stats.sort_by{|item| (1/(item[1][0].to_f + 0.01))*item[1][1].to_f}.reverse
+       @words = Word.all(:conditions => {:id => stat_keys})
+     end
+   end
+================================================================================
+app/controllers/graphs_controller.rb
+================================================================================
+   class GraphsController < ApplicationController
+     def index
+         respond_to do |format|
+           format.html do
+         @graph = open_flash_chart_object( 750, 330, url_for( :action => 'index', :format => :json ) )
+        end
+           format.json do
+             data = []
+             y_max = 0
+             start_point = 3.month.ago
+             end_point = Date.today
+             
+         (start_point.to_date..end_point).to_a.map{|item| item.to_s(:db)}.each do |day|
+               x = day.to_time.to_i
+           
+               attempts = Attempt.all(:conditions => ['created_at > ? and created_at < ?', day.to_date.at_beginning_of_day, day.to_date.tomorrow.at_beginning_of_day])
+           unless attempts.empty?
+                   y = (attempts.inject(0){|sum, item| sum + item.distance})/attempts.size.to_f
+                   data << ScatterValue.new(x, y)
+                   y_max = y if y > y_max
+           end        
+         end
+         
+             dot = HollowDot.new
+             dot.size = 3
+             dot.halo_size = 2
+             dot.tooltip = "#date:d M y#<br>#val#"
+             
+             line = ScatterLine.new("#DB1750", 3)
+             line.values = data
+             line.default_dot_style = dot
+             
+             x = XAxis.new
+             x.set_range(start_point.to_time.to_i, end_point.to_time.to_i)
+             x.steps = 86400
+             
+             labels = XAxisLabels.new
+             labels.text = "#date: l jS, M Y#"
+             labels.steps = 86400
+             labels.visible_steps = 4
+             labels.rotate = 90
+   
+             x.labels = labels
+             
+             y = YAxis.new
+             y.set_range(0, y_max.ceil, 0.3)
+         
+             chart = OpenFlashChart.new
+             chart.title = Title.new("Зависимость среднего расстояния Левенштайна от времени")
+             chart.add_element(line)
+             chart.x_axis = x
+             chart.y_axis = y
+             
+         render :text => chart, :layout => false
+        end
+       end
+     end
+   end
+================================================================================
+app/helpers/words_helper.rb
+================================================================================
+   module WordsHelper
+   end
+================================================================================
+lib/leven.rb
+================================================================================
+   $KCODE = 'UTF-8'
+   
+   def ld(s,t)
+     
+     
+     n = s.size
+     m = t.size
+     a = Array.new
+   
+     r = Array.new
+     rz = Array.new
+   
+     0.upto(m) {|x| r.push(0)}
+   
+     0.upto(n) {|x|a.push(r.dup)}
+     a.each_index {|x| a[x][0] = x}
+     0.upto(m) {|x| a[0][x] = x}
+   
+     cost =  0
+     1.upto(n) do |i|
+       1.upto(m) do |j|
+         cost = s[i] == t[j] ? 0 : 1
+         a[i][j] = [a[ i- 1][j] +1,a[i][j - 1] + 1,a[i - 1][j -1] + cost].min
+       end
+     end
+     a[n][m]
+   end
+================================================================================
+app/helpers/graphs_helper.rb
+================================================================================
+   module GraphsHelper
+   end
+================================================================================
+app/controllers/attempts_controller.rb
+================================================================================
+   require 'lib/leven'
+   
+   class AttemptsController < ApplicationController
+     def new
+       @word = Word.get_random_word
+       @attempt = Attempt.new(:word_id => @word.id)
+     end
+     
+     def create
+       word = Word.find params[:attempt][:word_id]
+       
+       attempt = Attempt.new
+       attempt.word_id = params[:attempt][:word_id]
+       attempt.is_correct = !!(params[:attempt][:version] == word.slov)
+       
+       # ld is method for levenstine range calculation. method defined in libs
+       attempt.distance = ld(word.slov, params[:attempt][:version])
+       attempt.save!
+       
+       if attempt.is_correct
+         flash[:notice] = "Верно. #{word.rus} переводится как #{word.slov}"
+       else
+         flash[:error] = "Неверно. #{word.rus} переводится не как #{params[:attempt][:version]}, а как #{word.slov}"
+       end
+       
+       redirect_to :action => :new
+     end
+   end
+================================================================================
+app/helpers/attempts_helper.rb
+================================================================================
+   module AttemptsHelper
+   end
+================================================================================
+app/controllers/application_controller.rb
+================================================================================
+   # Filters added to this controller apply to all controllers in the application.
+   # Likewise, all the methods added will be available for all controllers.
+   
+   class ApplicationController < ActionController::Base
+     helper :all # include all helpers, all the time
+     protect_from_forgery # See ActionController::RequestForgeryProtection for details
+   
+     # Scrub sensitive parameters from your log
+     # filter_parameter_logging :password
+   end
+================================================================================
+app/controllers/words_controller.rb
+================================================================================
+   class WordsController < ApplicationController
+     def new
+       @word = Word.new
+       @word.category_id = session[:current_category_id] if session[:current_category_id]
+     end
+     
+     def create
+       @word = Word.new params[:word]
+       @word.save!
+   
+       session[:current_category_id] = @word.category_id
+       
+       redirect_to :back
+     end
+     
+     def show
+       @word = Word.first(:conditions => {:id => params[:word_id]}, :include => :attempts)
+     end
+   end
+================================================================================
+app/models/word.rb
+================================================================================
+   class Word < ActiveRecord::Base
+     has_many :attempts
+     belongs_to :category
+   
+     def total_attempts
+       self.attempts.size
+     end
+     
+     def bad_attempts
+       self.attempts.select{|item| item.is_correct == false}.size
+     end
+     
+     def good_attempts
+       self.attempts.select{|item| item.is_correct}.size
+     end
+     
+     def bad_attempts_percent
+       if total_attempts > 0
+           bad_attempts/(total_attempts.to_f)
+       else
+         0.0
+       end
+     end
+     
+     def good_attempts_percent
+       if total_attempts > 0
+           good_attempts/(total_attempts.to_f)
+       else
+         0.0
+       end
+     end
+     
+     def self.get_random_word
+       words = Word.all(:include => :attempts, :conditions => 'category_id != 8')
+       
+       weights = words.map do |w|
+                   freq = (w.total_attempts == 0 ? 3/0.01 : 3.0/w.total_attempts)
+                   corr = (w.good_attempts_percent == 0.0 ? 10/0.01 : 10.0/w.good_attempts_percent)
+                             
+                   (1*freq*corr).ceil
+                 end
+                           
+       weights ||= Array.new(words.size, 1.0)
+       total = weights.inject(0.0) {|t,w| t+w}
+       point = rand * total
+         
+       words.zip(weights).each do |n,w|
+         return n if w >= point
+         point -= w
+       end
+     end
+     
+     def average_leven period
+       attempts = self.attempts.select{|item| item.created_at > period.ago}
+       
+       if attempts.empty?
+         0
+       else
+         (attempts.inject(0){|sum, item| sum + item.distance})/attempts.size.to_f
+       end
+     end
+     
+     def self.average_leven period
+       attempts = Attempt.all(:select => 'distance', :conditions => ['created_at > ?', period.ago])
+       
+       if attempts.empty?
+         0
+       else
+         (attempts.inject(0){|sum, item| sum + item.distance})/attempts.size.to_f
+       end
+     end
+   end
+================================================================================
+app/helpers/categories_helper.rb
+================================================================================
+   module CategoriesHelper
+   end
+================================================================================
+app/controllers/categories_controller.rb
+================================================================================
+   class CategoriesController < ApplicationController
+   end
+================================================================================
+app/models/category.rb
+================================================================================
+   class Category < ActiveRecord::Base
+     has_many :words
+   end

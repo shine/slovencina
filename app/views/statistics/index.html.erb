@@ -1,0 +1,28 @@
+<h2>Всего</h2>
+<p>Слов: <%= @words.size %><br/>
+Попыток: <%= @total_attempts %></p>
+<p class="<%= get_success_color(@total_good_attempts_percent) %>">Процент удачных: <%= '%.2f' % @total_good_attempts_percent %></p>
+
+<p>РЛ за день: <%= '%.2f' % Word.average_leven(1.day) %><br/>
+РЛ за неделю: <%= '%.2f' % Word.average_leven(1.week) %><br/>
+РЛ за месяц: <%= '%.2f' % Word.average_leven(1.month) %></p>
+
+<h2>По словам</h2>
+<table width="100%">
+  <thead>
+    <tr>
+      <th>По-русски</th>
+      <th>По-словацки</th>
+      <th>Попыток</th>
+      <th>Процент попаданий</th>
+    </tr>
+  </thead>
+  <% @words.each do |w| %>
+    <tr class="<%= get_success_color(w.good_attempts_percent) %>">
+      <td><%= w.rus %></td>
+      <td><%= w.slov %></td>
+      <td><%= w.total_attempts %></td>
+      <td><%= '%.2f' % w.good_attempts_percent %></td>
+    </tr>
+  <% end %>
+</table>

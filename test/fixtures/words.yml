@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rus: RusString
+  slov: SlovString
+  category_id: 1
+
+two:
+  rus: OtherRusString
+  slov: OtherSlovString
+  category_id: 1

@@ -1,0 +1,8 @@
+Thread ID: 70209400197560
+Total: 0.020000
+
+ %self     total     self     wait    child    calls  name
+ 50.00      0.02     0.01     0.00     0.01        1  ActiveSupport::Testing::Performance::Profiler#run
+ 50.00      0.01     0.01     0.00     0.01      539  Proc#call
+
+

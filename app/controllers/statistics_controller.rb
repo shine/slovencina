@@ -1,17 +1,17 @@
 class StatisticsController < ApplicationController
   def index
-    @words = Word.all(:include => :attempts).sort_by(&:good_attempts_percent)
-    @total_attempts = Attempt.count
-    @total_good_attempts = Attempt.count(:conditions => {:is_correct => true})
+    @words = Word.all(:include => :attempts).sort_by{|item| item.good_attempts_percent(current_user)}
+    @total_attempts = current_user.attempts.count
+    @total_good_attempts = current_user.attempts.count(:conditions => {:is_correct => true})
     @total_good_attempts_percent = @total_good_attempts/(@total_attempts.to_f)
   end
   
   def show
-      days_counter = params[:id].to_i || 1
-      attempts = Attempt.all(:conditions => ['created_at > ?', days_counter.days.ago])
+    days_counter = params[:id].to_i || 1
+    attempts = current_user.attempts.all(:conditions => ['created_at > ?', days_counter.days.ago])
     
     @stats = {}
-      attempts.each do |a|
+    attempts.each do |a|
       unless @stats[a.word_id]
             word_attempts = attempts.select{|item| item.word_id == a.word_id}
             

@@ -3,9 +3,9 @@
 Попыток: <%= @total_attempts %></p>
 <p class="<%= get_success_color(@total_good_attempts_percent) %>">Процент удачных: <%= '%.2f' % @total_good_attempts_percent %></p>
 
-<p>РЛ за день: <%= '%.2f' % Word.average_leven(1.day) %><br/>
-РЛ за неделю: <%= '%.2f' % Word.average_leven(1.week) %><br/>
-РЛ за месяц: <%= '%.2f' % Word.average_leven(1.month) %></p>
+<p>РЛ за день: <%= '%.2f' % Word.average_leven(1.day, current_user) %><br/>
+РЛ за неделю: <%= '%.2f' % Word.average_leven(1.week, current_user) %><br/>
+РЛ за месяц: <%= '%.2f' % Word.average_leven(1.month, current_user) %></p>
 
 <h2>По словам</h2>
 <table width="100%">
@@ -18,11 +18,11 @@
     </tr>
   </thead>
   <% @words.each do |w| %>
-    <tr class="<%= get_success_color(w.good_attempts_percent) %>">
+    <tr class="<%= get_success_color(w.good_attempts_percent(current_user)) %>">
       <td><%= w.rus %></td>
       <td><%= w.slov %></td>
-      <td><%= w.total_attempts %></td>
-      <td><%= '%.2f' % w.good_attempts_percent %></td>
+      <td><%= w.total_attempts(current_user) %></td>
+      <td><%= '%.2f' % w.good_attempts_percent(current_user) %></td>
     </tr>
   <% end %>
 </table>

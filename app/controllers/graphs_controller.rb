@@ -13,7 +13,7 @@ class GraphsController < ApplicationController
           (start_point.to_date..end_point).to_a.map{|item| item.to_s(:db)}.each do |day|
             x = day.to_time.to_i
         
-            attempts = Attempt.all(:conditions => ['created_at > ? and created_at < ?', day.to_date.at_beginning_of_day, day.to_date.tomorrow.at_beginning_of_day])
+            attempts = current_user.attempts.all(:conditions => ['created_at > ? and created_at < ?', day.to_date.at_beginning_of_day, day.to_date.tomorrow.at_beginning_of_day])
             unless attempts.empty?
                 y = (attempts.inject(0){|sum, item| sum + item.distance})/attempts.size.to_f
                 data << ScatterValue.new(x, y)

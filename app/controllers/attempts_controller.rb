@@ -4,7 +4,7 @@ class AttemptsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
 
   def new
-    @word = Word.get_random_word
+    @word = Word.get_random_word(current_user)
     @attempt = Attempt.new(:word_id => @word.id)
 
     respond_to do |format|
@@ -22,7 +22,9 @@ class AttemptsController < ApplicationController
     
     # ld is method for levenstine range calculation. method defined in libs
     attempt.distance = ld(word.slov, params[:attempt][:version])
+    attempt.user_id = current_user.id
     attempt.save!
+    
     respond_to do |format|
       format.html do
         if attempt.is_correct

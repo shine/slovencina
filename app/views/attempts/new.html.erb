@@ -9,7 +9,7 @@
 <%= form_for @attempt do |a| %>
   <%= a.hidden_field :word_id %>
   <p>
-    Русское слово "<%= @word.rus %>" на словацком будет...
+    Русское слово "<%= current_user.from_for_word(@word) %>" на словацком будет...
     <%= text_field_tag 'attempt[version]' %>
   </p>
   <%= submit_tag 'Точно' %>

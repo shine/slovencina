@@ -3,8 +3,8 @@
   <% @stats[0..9].compact.each do |s| %>
     <% current_word = @words.detect{|item| item.id == s[0]} || next %>
     <tr>
-      <td><%= current_word.rus %></td>
-      <td><%= current_word.slov %></td>
+      <td><%= current_user.from_for_word(current_word) %></td>
+      <td><%= current_user.to_for_word(current_word) %></td>
     </tr>
   <% end %>
 </table>

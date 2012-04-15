@@ -19,8 +19,8 @@
   </thead>
   <% @words.each do |w| %>
     <tr class="<%= get_success_color(w.good_attempts_percent(current_user)) %>">
-      <td><%= w.rus %></td>
-      <td><%= w.slov %></td>
+      <td><%= current_user.from_for_word(w) %></td>
+      <td><%= current_user.to_for_word(w) %></td>
       <td><%= w.total_attempts(current_user) %></td>
       <td><%= '%.2f' % w.good_attempts_percent(current_user) %></td>
     </tr>

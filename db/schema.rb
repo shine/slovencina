@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411063708) do
+ActiveRecord::Schema.define(:version => 20120411135445) do
 
   create_table "attempts", :force => true do |t|
     t.integer  "word_id"
@@ -50,9 +50,14 @@ ActiveRecord::Schema.define(:version => 20120411063708) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "language_from"
+    t.string   "language_to"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["language_from", "language_to"], :name => "index_users_on_language_from_and_language_to"
+  add_index "users", ["language_from"], :name => "index_users_on_language_from"
+  add_index "users", ["language_to"], :name => "index_users_on_language_to"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "words", :force => true do |t|

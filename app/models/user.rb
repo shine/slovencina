@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :attempts
+
+  def from_for_word word
+      word[self.language_from.to_s]
+  end
+
+  def to_for_word word
+      word[self.language_to.to_s]
+  end
 end

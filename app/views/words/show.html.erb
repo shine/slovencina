@@ -1,2 +1,2 @@
-<p><%= @word.rus %></p>
-<p><%= @word.slov %></p>
+<p><%= current_user.from_for_word(@word) %></p>
+<p><%= current_user.to_for_word(@word) %></p>

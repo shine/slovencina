@@ -1,5 +1,3 @@
-require 'lib/leven'
-
 class AttemptsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
 
@@ -21,7 +19,7 @@ class AttemptsController < ApplicationController
     attempt.is_correct = !!(params[:attempt][:version] == current_user.to_for_word(word))
     
     # ld is method for levenstine range calculation. method defined in libs
-    attempt.distance = ld(current_user.to_for_word(word), params[:attempt][:version])
+    attempt.distance = Leven.ld(current_user.to_for_word(word), params[:attempt][:version])
     attempt.user_id = current_user.id
     attempt.save!
     

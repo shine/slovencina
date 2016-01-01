@@ -70,6 +70,7 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "8efa9ea3ca9cd65b30a8e5d175e29655a11ab3f314417df42b498bd07346bc676d5ca1492e56fb1b3ac52600d3c811bee01b20d42124d46b523e18d2a82124e8"
+  config.secret_key = 'f96ab57995e097e8fe0468553fcd1f90f7522c2e57e72fe81fdb252771dd26db1122ba7a95252c869959f2b93589b954c4aa43b392e71c080e37eb3df9c86500'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -94,7 +95,7 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
+  #config.use_salt_as_remember_token = true
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.

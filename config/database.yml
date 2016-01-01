@@ -1,15 +1,19 @@
 development:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: slovencina_development
-  username: root
-  password: ruebe
+  username: databaser
+  password: multipass
   host: localhost
+  pool: 5
+  timeout: 5000
 
 test:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: slovencina_test
-  username: root
-  password: ruebe
+  username: databaser
+  password: multipass
   host: localhost
+  pool: 5
+  timeout: 5000

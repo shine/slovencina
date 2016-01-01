@@ -73,7 +73,7 @@ class Word < ActiveRecord::Base
   end
   
   def average_leven(period, user)
-    attempts = self.attempts.where(:user_id => user.id).all(:select => 'distance', :conditions => ['created_at > ?', period.ago])
+    attempts = self.attempts.where(:user_id => user.id).where('created_at > ?', period.ago).select(:distance)
     
     if attempts.empty?
       0
@@ -83,7 +83,7 @@ class Word < ActiveRecord::Base
   end
   
   def self.average_leven(period, user)
-    attempts = Attempt.where(:user_id => user.id).all(:select => 'distance', :conditions => ['created_at > ?', period.ago])
+    attempts = Attempt.where(:user_id => user.id).where('created_at > ?', period.ago).select(:distance)
     
     if attempts.empty?
       0

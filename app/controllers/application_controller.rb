@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
-  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
+#  skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password

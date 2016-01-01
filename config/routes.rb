@@ -10,7 +10,7 @@ Slovencina::Application.routes.draw do
   end
   resources :statistics
   
-  match '/:controller(/:action(/:id))'
+  get '/:controller(/:action(/:id))'
 
   root :to => 'statistics#index'
 end
